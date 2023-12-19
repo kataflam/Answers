@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Game Answer</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h3 {
+      color: #3498db;
+      margin-bottom: 20px;
+    }
+
+    #logo {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    input {
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .hidden {
+      display: none; /* Initially hidden */
+    }
+
+    #imageFrame img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd; /* Add border for better visibility */
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img id="logo" src="your-logo.png" alt="Logo">
+    <h3>Get A Game Answer</h3>
+    <label for="question">Enter a number:</label>
+    <input type="number" id="question" min="1" max="6">
+    <button onclick="getAnswer()">Get Answer</button>
+    <p id="result"><span id="answerContent"></span></p>
+    <div id="imageFrame" class="hidden"></div>
+  </div>
+
+  <script>
+    function getAnswer() {
+      var questionNumber = parseInt(document.getElementById("question").value);
+      var answers = {
+        1: "MONica",
+        2: "https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-980x653.jpg",
+        3: "the ball",
+        4: "Youssef",
+        5: "mobile",
+        6: "car"
+      };
+      var resultElement = document.getElementById("result");
+      var imageFrameElement = document.getElementById("imageFrame");
+
+      // Clear old answer and image
+      resultElement.textContent = "";
+      imageFrameElement.innerHTML = "";
+      imageFrameElement.classList.add("hidden");
+
+      if (!isNaN(questionNumber) && questionNumber >= 1 && questionNumber <= 6) {
+        var answer = answers[questionNumber];
+
+        if (questionNumber === 2) {
+          var img = document.createElement("img");
+          img.src = answer;
+          img.alt = "Image";
+          imageFrameElement.appendChild(img);
+          imageFrameElement.classList.remove("hidden");
+        } else {
+          resultElement.textContent = "Answer: " + answer;
+        }
+      } else {
+        // Display error message for invalid input
+        resultElement.textContent = "Invalid question number. Please enter a number between 1 and 6.";
+      }
+    }
+  </script>
+
+</body>
+</html>
