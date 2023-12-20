@@ -1,3 +1,4 @@
+
 import streamlit as st
 
 # Define the list of items
@@ -307,18 +308,7 @@ items = {
 }
 
 def main():
-    # Add a background image
-    st.markdown(
-        """
-        <style>
-            body {
-                background-image: 'web1.png';  /* Updated to use web1.png in the same directory */
-                background-size: cover;
-            }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+    st.image('web1.png', use_column_width=True)
 
     st.title("The Answers of Kataflam Friends Edition Card Game")
 
@@ -331,3 +321,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
