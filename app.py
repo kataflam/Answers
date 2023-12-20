@@ -307,9 +307,10 @@ items = {
 }
 
 def main():
+    st.title("The Answers of Kataflam Friends Edition Card Game")
+
     # Add a background image
     st.image('web1.png', use_column_width=True, caption='', output_format='auto', width=None)
-    st.title("The Answers of Kataflam Friends Edition Card Game")
 
     user_input = st.number_input("Enter the Question number", min_value=1, max_value=300, step=1)
     show_answer = st.button("Get Answer")
