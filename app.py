@@ -308,19 +308,10 @@ items = {
 
 def main():
     # Add a background image
-    background_css = """
-        <style>
-            body {
-                background: url('web1.png'); 
-                background-size: cover;
-            }
-        </style>
-    """
-    st.markdown(background_css, unsafe_allow_html=True)
-
+    st.image('web1.png', use_column_width=True, caption='', output_format='auto', width=None)
     st.title("The Answers of Kataflam Friends Edition Card Game")
 
-    user_input = st.number_input("Enter the Question", min_value=1, max_value=300, step=1)
+    user_input = st.number_input("Enter the Question number", min_value=1, max_value=300, step=1)
     show_answer = st.button("Get Answer")
 
     if show_answer:
