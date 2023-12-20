@@ -308,7 +308,13 @@ items = {
 }
 
 def main():
-    st.image('web1.png', use_column_width=True)
+ # Add a background image using an image element and position it behind the main content
+    st.image('web1.png', use_column_width=True, caption='', output_format='auto', width=None)
+    
+    # Set the main content in a container to overlay on top of the image
+    main_container = st.container()
+
+    with main_container:
 
     st.title("The Answers of Kataflam Friends Edition Card Game")
 
