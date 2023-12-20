@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request
 
-app = Flask(__name__)
+import streamlit as st
 
 # Define the list of items
 items = {
@@ -14,30 +13,19 @@ items = {
     8: "Bonnie and Julie",
     9: "Brad Pitt",
     10: "Van Damme",
-   
 
-    299: "رايتشيل",
-    300: "د. جرين أبو رايتشيل",
 }
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    answer = None
-    if request.method == 'POST':
-        try:
-            user_input = int(request.form['user_input'])
-            if 1 <= user_input <= 300:
-                # Check if the user input exists in the items dictionary
-                if user_input in items:
-                    answer = items[user_input]
-                else:
-                    answer = 'No information available for this number.'
-            else:
-                answer = 'Please enter a number between 1 and 300.'
-        except ValueError:
-            answer = 'Invalid input. Please enter a valid number.'
+def main():
+    st.title("Number Text Answer")
 
-    return render_template('index.html', answer=answer)
+    user_input = st.number_input("Enter a number from 1 to 300:", min_value=1, max_value=300, step=1)
+    answer = items.get(int(user_input), 'No information available for this number.')
+
+    st.write(f'Text answer: {answer}')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    main()
+
+
+
